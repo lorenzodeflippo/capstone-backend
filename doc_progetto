@@ -1,0 +1,16 @@
+Creazione di una modalità sandbox per il wrestling, una piattaforma gestionale di roster creati
+dal computer o dall'utente. La piattaforma include una modalità draft per dividere i roster,
+assegnare titoli, creare rivalità e alleanze, formare tag team, e molto altro.
+Gli utenti potranno creare e gestire roster composti da atleti maschili e femminili,
+leggende del passato, stelle attuali e future promesse, oltre a personaggi di fantasia.
+L'obiettivo è di offrire un'esperienza coinvolgente e realistica per gli appassionati di wrestling,
+utilizzabile sia per divertimento che per approfondire le strategie di gestione del wrestling.
+Gli utenti potranno creare e gestire roster personalizzati, partecipare a draft e sfidarsi
+tra di loro, oltre a personalizzare varie impostazioni e opzioni.
+Questo progetto punterà a creare una piattaforma gestionale per appassionati di wrestling,
+combinando realtà e simulazione, l'obiettivo sarà offrire un'esperienza completa e personalizzabile.
+
+Atleta (id, name)
+Manager (id, name)
+General Manager(id, name)
+Roster (list <wrestler> wrestlers)
