@@ -11,52 +11,57 @@ import java.util.List;
 public class GeneralManagerService {
 
     @Autowired
-    private GeneralManagerRepository generalManagerRepository;
+    private GeneralManagerRepository repository;
 
+    // GET ALL
     public List<GeneralManager> findAll() {
-        return generalManagerRepository.findAll();
+        return repository.findAll();
     }
 
-    public GeneralManagerResponse findById(Long id) {
-        if (!generalManagerRepository.existsById(id)) {
+    //GET per ID
+    public Response findById(Long id) {
+        if (!repository.existsById(id)) {
             throw new EntityNotFoundException("General Manager non trovato");
         }
-        GeneralManager generalManager = generalManagerRepository.findById(id).get();
-        GeneralManagerResponse generalManagerResponse = new GeneralManagerResponse();
+        GeneralManager entity = repository.findById(id).get();
+        Response response = new Response();
 
-        BeanUtils.copyProperties(generalManager, generalManagerResponse);
-        return generalManagerResponse;
+        BeanUtils.copyProperties(entity, response);
+        return response;
     }
 
-    public GeneralManagerResponse create(GeneralManagerRequest generalManagerRequest) {
-        GeneralManager generalManager = new GeneralManager();
+    // POST
+    public Response create(Request request) {
+        GeneralManager entity = new GeneralManager();
 
-        BeanUtils.copyProperties(generalManagerRequest, generalManager);
-        GeneralManagerResponse generalManagerResponse = new GeneralManagerResponse();
+        BeanUtils.copyProperties(request, entity);
+        Response response = new Response();
 
-        BeanUtils.copyProperties(generalManager, generalManagerResponse);
-        generalManagerRepository.save(generalManager);
-        return generalManagerResponse;
+        BeanUtils.copyProperties(entity, response);
+        repository.save(entity);
+        return response;
     }
 
-    public GeneralManagerResponse modify(Long id, GeneralManagerRequest generalManagerRequest) {
-        if (!generalManagerRepository.existsById(id)) {
+    // PUT
+    public Response modify(Long id, Request request) {
+        if (!repository.existsById(id)) {
             throw new EntityNotFoundException("General Manager non trovato");
         }
-        GeneralManager generalManager = generalManagerRepository.findById(id).get();
+        GeneralManager entity = repository.findById(id).get();
 
-        BeanUtils.copyProperties(generalManagerRequest, generalManager);
-        generalManagerRepository.save(generalManager);
-        GeneralManagerResponse generalManagerResponse = new GeneralManagerResponse();
-        BeanUtils.copyProperties(generalManager, generalManagerResponse);
-        return generalManagerResponse;
+        BeanUtils.copyProperties(request, entity);
+        repository.save(entity);
+        Response response = new Response();
+        BeanUtils.copyProperties(entity, response);
+        return response;
     }
 
+    // DELETE
     public String delete(Long id) {
-        if (!generalManagerRepository.existsById(id))
+        if (!repository.existsById(id))
             throw new EntityNotFoundException("General Manager non trovato");
 
-        generalManagerRepository.deleteById(id);
+        repository.deleteById(id);
         return "General Manager eliminato";
     }
 }

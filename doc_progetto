@@ -10,7 +10,7 @@ tra di loro, oltre a personalizzare varie impostazioni e opzioni.
 Questo progetto punterà a creare una piattaforma gestionale per appassionati di wrestling,
 combinando realtà e simulazione, l'obiettivo sarà offrire un'esperienza completa e personalizzabile.
 
-Atleta (id, name)
-Manager (id, name)
-General Manager(id, name)
-Roster (list <wrestler> wrestlers)
+Wrestler (id, name) = libro
+Manager (id, name) = casa editrice
+General Manager(id, name) = categoria
+Roster (list <wrestler> wrestlers) = libreria

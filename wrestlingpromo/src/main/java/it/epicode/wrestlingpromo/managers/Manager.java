@@ -12,6 +12,6 @@ public class Manager {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(length = 50)
-    private String nome;
+    @Column(length = 50, unique = true)
+    private String name;
 }
