@@ -8,8 +8,9 @@ import java.util.List;
 @Data
 public class CompleteResponse {
     private Long id;
-    private String name;
-    private it.epicode.wrestlingpromo.managers.Response manager;
+    private String ringname;
+    private it.epicode.wrestlingpromo.managers.LightResponse manager;
     private it.epicode.wrestlingpromo.general_managers.Response generalManager;
     private List<Roster> rosters;
+    private it.epicode.wrestlingpromo.factions.Response faction;
 }

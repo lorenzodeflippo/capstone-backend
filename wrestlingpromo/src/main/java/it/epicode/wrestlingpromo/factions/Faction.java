@@ -1,4 +1,4 @@
-package it.epicode.wrestlingpromo.managers;
+package it.epicode.wrestlingpromo.factions;
 
 import it.epicode.wrestlingpromo.wrestlers.Wrestler;
 import jakarta.persistence.*;
@@ -8,19 +8,19 @@ import lombok.ToString;
 import java.util.List;
 
 @Entity
-@Table(name = "managers")
 @Data
-public class Manager {
+@Table(name = "factions")
+public class Faction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(length = 50, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "manager")
-    @ToString.Exclude
-    private List<Wrestler> wrestler;
+    private int numberMembers;
 
+    @OneToMany(mappedBy = "faction")
+    @ToString.Exclude
+    private List<Wrestler> wrestlers;
 }

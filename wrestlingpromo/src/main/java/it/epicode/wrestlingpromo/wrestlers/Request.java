@@ -10,6 +10,7 @@ public class Request {
     private List<Long> idRoster;
     private Long idManager;
     private Long idGeneralManager;
+    private Long idFaction;
 
 
 }

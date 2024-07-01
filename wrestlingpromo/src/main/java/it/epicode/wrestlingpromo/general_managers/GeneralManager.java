@@ -1,7 +1,11 @@
 package it.epicode.wrestlingpromo.general_managers;
 
+import it.epicode.wrestlingpromo.wrestlers.Wrestler;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @Table(name = "general_managers")
@@ -15,4 +19,10 @@ public class GeneralManager {
     @Column(length = 50, unique = true)
 
     private String name;
+
+    @OneToMany(mappedBy = "general_manager")
+    @ToString.Exclude
+    private List<Wrestler> wrestler;
+
+
 }

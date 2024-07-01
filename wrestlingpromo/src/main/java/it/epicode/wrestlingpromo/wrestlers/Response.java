@@ -6,6 +6,5 @@ import lombok.Data;
 public class Response {
     private long id;
     private String name;
-
 }
 
