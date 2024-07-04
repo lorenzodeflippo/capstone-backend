@@ -23,7 +23,7 @@ public class Wrestler {
 
     private String ringname;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @ToString.Exclude
     @JsonIgnoreProperties({"wrestlers","id"})
     private Manager manager;

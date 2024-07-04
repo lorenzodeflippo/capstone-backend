@@ -153,4 +153,74 @@ public class WrestlerService {
         repository.deleteById(id);
         return "Wrestler eliminated";
     }
+    // creation entity on entity
+
+    @Transactional
+    public Response createWrstlrAndMngr(Request wrstlrRequest, it.epicode.wrestlingpromo.managers.CompleteRequest mngrRequest){
+        Manager manager;
+
+        if(!managerRepository.existsById(mngrRequest.getId())){
+            manager = new Manager();
+            manager.setName(mngrRequest.getName());
+            managerRepository.save(manager);
+        } else {
+            manager = managerRepository.findById(mngrRequest.getId()).get();
+        }
+        if(!generalManagerRepository.existsById(wrstlrRequest.getIdGeneralManager())){
+            throw new EntityNotFoundException("General Manager not found");
+        }
+        GeneralManager generalManager = generalManagerRepository.findById(wrstlrRequest.getIdGeneralManager()).get();
+        if(!factionRepository.existsById(wrstlrRequest.getIdFaction())){
+            throw new EntityNotFoundException("Faction not found");
+        }
+        Faction faction = factionRepository.findById(wrstlrRequest.getIdFaction()).get();
+        Wrestler entity = new Wrestler();
+        entity.setManager(manager);
+        entity.setGeneralManager(generalManager);
+        entity.setFaction(faction);
+        entity.setRosters(rosterRepository.findAllById(wrstlrRequest.getIdRoster()));
+        BeanUtils.copyProperties(wrstlrRequest, entity);
+        repository.save(entity);
+        Response response = new Response();
+        BeanUtils.copyProperties(entity, response);
+        return response;
+    }
+
+    // Create
+
+    public Response createWrestlersAndManagers(CreateWrstlrAndMngrRequest request){
+        Manager manager = new Manager();
+        BeanUtils.copyProperties(request, manager);
+        Wrestler entity = new Wrestler();
+        if(!generalManagerRepository.existsById(request.getIdGeneralManager())){
+            throw new EntityNotFoundException("General Manager not found");
+        }
+        GeneralManager generalManager = generalManagerRepository.findById(request.getIdGeneralManager()).get();
+        if(!factionRepository.existsById(request.getIdFaction())){
+            throw new EntityNotFoundException("Faction not found");
+        }
+        Faction faction = factionRepository.findById(request.getIdFaction()).get();
+        BeanUtils.copyProperties(request, entity);
+        entity.setRosters(rosterRepository.findAllById(request.getIdRosters()));
+        entity.setManager(manager);
+        entity.setFaction(faction);
+        repository.save(entity);
+        Response  response = new Response();
+        BeanUtils.copyProperties(response, entity);
+        return response;
+    }
+
+    //Example
+    public Response wrstlrAndMngrModify(Long id, ModifyWrstlrAndMngrRequest request){
+        if(!repository.existsById(id)){
+            throw new EntityNotFoundException("Wrestler not found");
+        }
+        Wrestler entity = repository.findById(id).get();
+        entity.setRingname(request.getRingName());
+        entity.getManager().setName(request.getNameManager());
+        repository.save(entity);
+        Response response = new Response();
+        BeanUtils.copyProperties(response, entity);
+        return response;
+    }
 }

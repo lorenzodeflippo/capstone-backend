@@ -1,0 +1,25 @@
+
+Wrestler Manager m
+Manager Wrestler m
+Relation Many to Many
+
+Wrestler Roster m
+Roster Wrestler m
+Relation Many to Many
+
+Wrestler GeneralManager o
+GeneralManager Wrestler m
+Relation one to many
+
+OnLoan Federation o
+Federation OnLoan m
+Relation OnetoMany
+
+RegisterWrestlerOnLoan Wrestler o
+Wrestler RegisterWrestlerOnLoan m
+Relation OneToMany
+
+RegisterWrestlerOnLoan RegisterOnLoan o
+RegisterOnLoan RegisterWrestlerOnLoan m
+Relation OneToMany
+
