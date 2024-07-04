@@ -13,13 +13,12 @@ public class RegisterWrestlersOnLoan {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany //(mappedBy = "wrestlers on loan")
+    @OneToMany
     private Wrestler wrestler;
 
     private boolean isReturned = false;
 
-    @ManyToOne //(mappedBy = "")
+    @ManyToOne
     private RegisterOnLoan registerOnLoan;
-
 
 }

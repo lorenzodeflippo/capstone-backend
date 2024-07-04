@@ -42,4 +42,7 @@ public class Wrestler {
     @ToString.Exclude
     @JsonIgnoreProperties("wrestler")
     private Faction faction;
+
+    private boolean isAvailable = true;
+
 }

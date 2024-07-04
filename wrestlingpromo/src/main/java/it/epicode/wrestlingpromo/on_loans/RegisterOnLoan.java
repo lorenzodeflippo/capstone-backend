@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,9 +21,9 @@ public class RegisterOnLoan {
 
     private LocalDate dateLoan;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Federation federation;
 
-    @OneToMany
-    private List<RegisterWrestlersOnLoan> registerWrestlersOnLoanList;
+    @OneToMany(mappedBy = "wrestlers on loan", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<RegisterWrestlersOnLoan> registerWrestlersOnLoanList = new ArrayList<>();
 }

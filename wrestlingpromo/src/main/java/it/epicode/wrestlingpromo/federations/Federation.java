@@ -18,6 +18,6 @@ public class Federation {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "federation")
+    @OneToMany(mappedBy = "federation", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RegisterOnLoan> onLoans;
 }
