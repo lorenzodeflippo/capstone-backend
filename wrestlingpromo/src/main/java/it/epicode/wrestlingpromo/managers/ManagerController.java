@@ -20,7 +20,7 @@ public class ManagerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Manager>> findAll() {
+    public ResponseEntity<List<ManagerResponsePrj>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 

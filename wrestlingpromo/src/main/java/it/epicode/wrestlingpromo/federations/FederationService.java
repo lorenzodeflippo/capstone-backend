@@ -2,21 +2,24 @@ package it.epicode.wrestlingpromo.federations;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
+@Validated
 public class FederationService {
 
     @Autowired
     private FederationRepository repository;
 
     // GET ALL
-    public List<Federation> findAll() {
-        return repository.findAll();
+    public List<FederationResponsePrj> findAll() {
+        return repository.findAllFederationResponsePrj();
     }
 
     //GET per ID
@@ -32,7 +35,7 @@ public class FederationService {
     }
 
     // POST
-    public Response create(Request request) {
+    public Response create(@Valid Request request) {
         if(repository.existsByName(request.getName())){
             throw new EntityExistsException("The Federation already exists");
         }
@@ -45,9 +48,9 @@ public class FederationService {
     }
 
     // PUT
-    public Response modify(Long id, Request request) {
+    public Response modify(Long id, @Valid Request request) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Federation non trovato");
+            throw new EntityNotFoundException("Federation not found");
         }
         Federation entity = repository.findById(id).get();
 
@@ -61,9 +64,9 @@ public class FederationService {
     // DELETE
     public String delete(Long id) {
         if (!repository.existsById(id))
-            throw new EntityNotFoundException("Federation non trovato");
+            throw new EntityNotFoundException("Federation not found");
 
         repository.deleteById(id);
-        return "Federation eliminato";
+        return "Federation eliminated";
     }
 }

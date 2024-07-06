@@ -20,6 +20,10 @@ public class OnLoanService {
     private final FederationRepository federationRepository;
     private final WrestlerRepository wrestlerRepository;
 
+    public List<OnLoanResponsePrj> findAll(){
+        return onLoanRepository.findAllOnLoanResponsePrj();
+    }
+
     public Response loan(CreateOnLoanRequest request){
         Federation entity;
         List<String> ringnamesWrestlersOnLoan = new ArrayList<>();

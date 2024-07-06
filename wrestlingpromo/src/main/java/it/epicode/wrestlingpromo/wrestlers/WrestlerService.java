@@ -112,8 +112,8 @@ public class WrestlerService {
 
     // GET
 
-    public List<Wrestler> findAll(){
-        return repository.findAll();
+    public List<WrestlerResponsePrj> findAll(){
+        return repository.findAllWrestlerResponsePrj();
     }
     @Transactional
     public CompleteResponse findById(Long id){

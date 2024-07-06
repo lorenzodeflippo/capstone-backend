@@ -1,21 +1,26 @@
 package it.epicode.wrestlingpromo.managers;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
+@Validated
 public class ManagerService {
 
     @Autowired
     private ManagerRepository repository;
 
     // GET ALL
-    public List<Manager> findAll() {
-        return repository.findAll();
+    public List<ManagerResponsePrj> findAll(){
+
+        return repository.findManagerResponsePrj();
     }
 
     //GET per ID
@@ -31,11 +36,12 @@ public class ManagerService {
     }
 
     // POST
-    public it.epicode.wrestlingpromo.managers.Response create(it.epicode.wrestlingpromo.managers.Request request) {
+    @Transactional
+    public Response create(@Valid Request request) {
         Manager entity = new Manager();
 
         BeanUtils.copyProperties(request, entity);
-        it.epicode.wrestlingpromo.managers.Response response = new it.epicode.wrestlingpromo.managers.Response();
+        Response response = new Response();
 
         BeanUtils.copyProperties(entity, response);
         repository.save(entity);
@@ -43,7 +49,7 @@ public class ManagerService {
     }
 
     // PUT
-    public it.epicode.wrestlingpromo.managers.Response modify(Long id, Request request) {
+    public Response modify(Long id, Request request) {
         if (!repository.existsById(id)) {
             throw new EntityNotFoundException("Manager non trovato");
         }
