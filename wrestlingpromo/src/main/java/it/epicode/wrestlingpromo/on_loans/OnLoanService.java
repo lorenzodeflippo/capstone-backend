@@ -21,7 +21,7 @@ public class OnLoanService {
     private final WrestlerRepository wrestlerRepository;
 
     public List<OnLoanResponsePrj> findAll(){
-        return onLoanRepository.findAllOnLoanResponsePrj();
+        return onLoanRepository.findAllBy();
     }
 
     public Response loan(CreateOnLoanRequest request){
@@ -42,7 +42,7 @@ public class OnLoanService {
             if(wrestler.isAvailable()){
                 numberWrestlersOnLoan++;
                 RegisterWrestlersOnLoan registerWrestlersOnLoan = new RegisterWrestlersOnLoan();
-                registerWrestlersOnLoan.setWrestler(wrestler);
+                registerWrestlersOnLoan.getWrestlers().add(wrestler);
                 wrestler.setAvailable(false);
                 ringnamesWrestlersOnLoan.add(wrestler.getRingname());
                 onloan.getRegisterWrestlersOnLoanList().add(registerWrestlersOnLoan);

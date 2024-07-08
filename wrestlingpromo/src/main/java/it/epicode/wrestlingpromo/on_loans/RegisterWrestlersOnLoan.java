@@ -4,6 +4,9 @@ import it.epicode.wrestlingpromo.wrestlers.Wrestler;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "wrestlers on loan")
@@ -13,8 +16,8 @@ public class RegisterWrestlersOnLoan {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany
-    private Wrestler wrestler;
+    @ManyToMany
+    private List<Wrestler> wrestlers = new ArrayList<>();
 
     private boolean isReturned = false;
 

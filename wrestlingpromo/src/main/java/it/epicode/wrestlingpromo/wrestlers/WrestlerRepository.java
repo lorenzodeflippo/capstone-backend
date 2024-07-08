@@ -16,6 +16,6 @@ public interface WrestlerRepository extends JpaRepository<Wrestler, Long> {
 
     public boolean existsByRingname(String ringname);
 
-    public List<WrestlerResponsePrj> findAllWrestlerResponsePrj();
+    public List<WrestlerResponsePrj> findAllBy();
     
 }

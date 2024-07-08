@@ -20,7 +20,7 @@ public class ManagerService {
     // GET ALL
     public List<ManagerResponsePrj> findAll(){
 
-        return repository.findManagerResponsePrj();
+        return repository.findAllBy();
     }
 
     //GET per ID
