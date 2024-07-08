@@ -20,7 +20,7 @@ public class GeneralManager {
 
     private String name;
 
-    @OneToMany(mappedBy = "general_manager")
+    @OneToMany(mappedBy = "generalManager")
     @ToString.Exclude
     private List<Wrestler> wrestler;
 

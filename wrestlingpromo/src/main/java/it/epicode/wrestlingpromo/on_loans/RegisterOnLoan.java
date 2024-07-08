@@ -24,6 +24,6 @@ public class RegisterOnLoan {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Federation federation;
 
-    @OneToMany(mappedBy = "wrestlers on loan", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "registerOnLoan", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<RegisterWrestlersOnLoan> registerWrestlersOnLoanList = new ArrayList<>();
 }

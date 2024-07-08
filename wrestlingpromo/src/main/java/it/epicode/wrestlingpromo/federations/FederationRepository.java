@@ -8,6 +8,5 @@ public interface FederationRepository extends JpaRepository<Federation, Long> {
     public Federation findByName(String name);
     public boolean existsByName(String name);
 
-    public List<FederationResponsePrj> findAllFederationResponsePrj();
-
+    public List<FederationResponsePrj> findAllBy();
 }

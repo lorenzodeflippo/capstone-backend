@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface RegisterOnLoanRepository extends JpaRepository<RegisterOnLoan, Long> {
 
-    public List<OnLoanResponsePrj> findAllOnLoanResponsePrj();
+    public List<OnLoanResponsePrj> findAllBy();
 }

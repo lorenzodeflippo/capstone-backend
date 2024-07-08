@@ -19,7 +19,7 @@ public class FederationService {
 
     // GET ALL
     public List<FederationResponsePrj> findAll() {
-        return repository.findAllFederationResponsePrj();
+        return repository.findAllBy();
     }
 
     //GET per ID
