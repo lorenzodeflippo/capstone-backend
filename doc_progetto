@@ -1,4 +1,4 @@
-Creazione di una modalità sandbox per il wrestling, una piattaforma gestionale di roster creati
+Questo progetto ha l'obiettivo di creare una modalità sandbox per il wrestling, una piattaforma gestionale di roster creati
 dal computer o dall'utente. La piattaforma include una modalità draft per dividere i roster,
 assegnare titoli, creare rivalità e alleanze, formare tag team, e molto altro.
 Gli utenti potranno creare e gestire roster composti da atleti maschili e femminili,
@@ -9,8 +9,6 @@ Gli utenti potranno creare e gestire roster personalizzati, partecipare a draft 
 tra di loro, oltre a personalizzare varie impostazioni e opzioni.
 Questo progetto punterà a creare una piattaforma gestionale per appassionati di wrestling,
 combinando realtà e simulazione, l'obiettivo sarà offrire un'esperienza completa e personalizzabile.
-La promotion può prestare uno o più wrestler ad una federazione per cui è necessario registrare sia
-la federazione che il prestito.
 
 
 
@@ -22,3 +20,4 @@ Wrestler (id, name) = libro
 Federation(id, name)
 RegisterOnLoan(id, numberLoan, dateLoan, Federation)
 RegisterOnLoanWrestlers(id, isReturned, RegisterOnLoan)
+

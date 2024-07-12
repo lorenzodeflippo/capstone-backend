@@ -11,6 +11,4 @@ public class Request {
     private Long idManager;
     private Long idGeneralManager;
     private Long idFaction;
-
-
 }
