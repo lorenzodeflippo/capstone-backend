@@ -23,7 +23,7 @@ public class RosterService {
         if (!repository.existsById(id)) {
             throw new EntityNotFoundException("Roster non trovato");
         }
-        Roster entity = repository.findById(id).get();
+        Roster entity = repository.findById(id).get(); //TODO chiamare il metodo .get() su un Optional senza vericare se è presente o meno lancia una NoSuchElementException
         it.epicode.wrestlingpromo.rosters.Response response = new it.epicode.wrestlingpromo.rosters.Response();
 
         BeanUtils.copyProperties(entity, response);

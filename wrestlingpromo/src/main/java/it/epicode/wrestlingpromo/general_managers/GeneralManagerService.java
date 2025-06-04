@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class GeneralManagerService {
-
+    //TODO al posto dell'autowired è meglio usare il @RequiredArgsConstructor di lombok e rendere il campo iniettato final
     @Autowired
     private GeneralManagerRepository repository;
 

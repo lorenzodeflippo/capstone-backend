@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
-
+//TODO la validazione della request di norma si mette sui controller nei service la si puo mettere
+// quando ai service vi si puo accedere in piu modi oltre che al controller tipo tramite batch
 @Service
 @Validated
 public class ManagerService {

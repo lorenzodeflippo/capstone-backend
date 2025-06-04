@@ -29,6 +29,9 @@ public class WrestlerService {
 
     //POST
     public Response create(Request request){
+        //TODO questi if possono essere eliminati con un design pattern chiamato Chain of Responsability
+        // permette di eliminare gli if e farne di separati e poi chiamare un solo metodo
+        // in modo da rendere il codice piu snello e leggibile
         if(!managerRepository.existsById(request.getIdManager())){
             throw new EntityNotFoundException("Manager not found");
         }
